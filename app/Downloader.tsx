@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { RotatingLines } from "react-loader-spinner";
+import { FiDownload } from "react-icons/fi";
 
 function Downloader() {
   const [url, setUrl] = useState("");
@@ -40,16 +42,32 @@ function Downloader() {
   };
 
   return (
-    <div>
-      <h1>GitHub Folder Downloader</h1>
+    <div className="flex  flex-col w-[50%] items-center justify-center">
       <Input
         type="text"
-        placeholder="Paste GitHub Directory URL"
+        placeholder="https://github.com/YugBhanushali/github-downloader-nextjs"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />
-      <Button onClick={handleDownload} disabled={isLoading}>
-        {isLoading ? "Downloading..." : "Download Folder"}
+      <Button
+        className="mt-6 rounded-lg w-[180px]"
+        onClick={handleDownload}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <RotatingLines
+            visible={true}
+            width="26"
+            strokeWidth="2"
+            strokeColor="white"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+          />
+        ) : (
+          <div className="flex gap-x-2 justify-center items-center">
+            <FiDownload size={18} /> Download
+          </div>
+        )}
       </Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
