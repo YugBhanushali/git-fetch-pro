@@ -2,10 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import JSZip from "jszip";
 
-export const config = {
-  runtime: "edge",
-};
-
 export async function POST(req: NextRequest) {
   if (req.method !== "POST") {
     return NextResponse.json({ error: "Method not allowed" }, { status: 405 });

@@ -28,7 +28,9 @@ function Downloader() {
       link.setAttribute("download", `${url.split("/").pop()}.zip`);
       document.body.appendChild(link);
       link.click();
-      link.parentNode.removeChild(link);
+      if (link.parentNode) {
+        link.parentNode.removeChild(link);
+      }
     } catch (error) {
       console.error("Error:", error);
       setError("Error downloading folder. Please check your URL.");
