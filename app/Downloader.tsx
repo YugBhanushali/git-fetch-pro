@@ -4,12 +4,13 @@ import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { RotatingLines } from "react-loader-spinner";
-import { FiDownload } from "react-icons/fi";
+import { FiDownload, FiCopy, FiCheck } from "react-icons/fi";
 
 function Downloader() {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleDownload = async () => {
     setIsLoading(true);
@@ -41,35 +42,67 @@ function Downloader() {
     }
   };
 
+  const handleCopyCurl = () => {
+    const fileName = `${url.split("/").pop()}.zip`;
+    const curlCommand = `curl --location 'https://gitfetchpro.vercel.app/api/download' \\\n--header 'Content-Type: application/json' \\\n--data '{"url": "${url}"}' \\\n--output ${fileName}`;
+    navigator.clipboard
+      .writeText(curlCommand)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000); // Reset after 3 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy CURL command: ", err);
+      });
+  };
+
   return (
-    <div className="flex  flex-col w-[50%] items-center justify-center">
+    <div className="flex flex-col w-[50%] items-center justify-center">
       <Input
         type="text"
         placeholder="https://github.com/YugBhanushali/github-downloader-nextjs"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />
-      <Button
-        className="mt-6 rounded-lg w-[180px]"
-        onClick={handleDownload}
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <RotatingLines
-            visible={true}
-            width="26"
-            strokeWidth="2"
-            strokeColor="white"
-            animationDuration="0.75"
-            ariaLabel="rotating-lines-loading"
-          />
-        ) : (
-          <div className="flex gap-x-2 justify-center items-center">
-            <FiDownload size={18} /> Download
-          </div>
-        )}
-      </Button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="flex gap-x-2 mt-6">
+        <Button
+          className=" rounded-lg w-[180px]"
+          onClick={handleDownload}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <RotatingLines
+              visible={true}
+              width="26"
+              strokeWidth="2"
+              strokeColor="white"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+            />
+          ) : (
+            <div className="flex gap-x-2 justify-center items-center">
+              <FiDownload size={18} /> Download
+            </div>
+          )}
+        </Button>
+        <Button
+          className=" rounded-lg w-[180px]  transition-transform  duration-200"
+          onClick={handleCopyCurl}
+          // disabled={copied}
+          variant={"outline"}
+        >
+          {copied ? (
+            <div className="flex gap-x-2 justify-center items-center">
+              <FiCheck size={18} /> Copied!
+            </div>
+          ) : (
+            <div className="flex gap-x-2 justify-center items-center">
+              <FiCopy size={18} /> Copy CURL
+            </div>
+          )}
+        </Button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   );
 }
