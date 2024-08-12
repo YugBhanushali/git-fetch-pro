@@ -85,6 +85,7 @@ async function fetchFolderContents(
           responseType: "arraybuffer",
         }
       );
+      console.log(response, "test");
       const filePath = fileUrl.substring(basePath.length);
       zip.file(filePath, response.data);
     })

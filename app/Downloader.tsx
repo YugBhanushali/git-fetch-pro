@@ -34,6 +34,9 @@ function Downloader() {
       if (link.parentNode) {
         link.parentNode.removeChild(link);
       }
+      if (response.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.error("Error:", error);
       setError("Error downloading folder. Please check your URL.");
@@ -57,16 +60,17 @@ function Downloader() {
   };
 
   return (
-    <div className="flex flex-col w-[50%] items-center justify-center">
+    <div className="flex flex-col w-[50%] items-center justify-center bg-white z-20 bg-opacity-10">
       <Input
         type="text"
         placeholder="https://github.com/YugBhanushali/github-downloader-nextjs"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
+        className=" sm:w-full "
       />
-      <div className="flex gap-x-2 mt-6">
+      <div className="flex gap-x-2 mt-6 ">
         <Button
-          className=" rounded-lg w-[180px]"
+          className=" rounded-lg w-[180px] sm:text-[14px] text-[12px]"
           onClick={handleDownload}
           disabled={isLoading}
         >
@@ -86,7 +90,7 @@ function Downloader() {
           )}
         </Button>
         <Button
-          className=" rounded-lg w-[180px]  transition-transform  duration-200"
+          className=" rounded-lg w-[180px]  transition-transform  duration-200 sm:text-[14px] text-[12px]"
           onClick={handleCopyCurl}
           // disabled={copied}
           variant={"outline"}
