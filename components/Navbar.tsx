@@ -17,7 +17,7 @@ const Navbar = () => {
             className="m-0 p-0"
           />
         </div>
-        <div className="flex font-bold text-[20px]">Git Fetch Pro</div>
+        <div className="flex font-black text-[20px]">Git Fetch Pro</div>
       </div>
       {/* github */}
       <div>

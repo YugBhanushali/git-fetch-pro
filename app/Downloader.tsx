@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { RotatingLines } from "react-loader-spinner";
 import { FiDownload, FiCopy, FiCheck } from "react-icons/fi";
+import { toast } from "sonner";
 
 function Downloader() {
   const [url, setUrl] = useState("");
@@ -36,10 +37,12 @@ function Downloader() {
       }
       if (response.data) {
         setIsLoading(false);
+        toast.success(`${url.split("/").pop()}.zip downloaded successfully`);
       }
     } catch (error) {
       console.error("Error:", error);
       setError("Error downloading folder. Please check your URL.");
+      toast.error("Error downloading folder. Please check your URL.");
     } finally {
       setIsLoading(false);
     }
@@ -60,24 +63,24 @@ function Downloader() {
   };
 
   return (
-    <div className="flex flex-col w-[50%] items-center justify-center bg-white z-20 bg-opacity-10">
+    <div className="flex flex-col w-full lg:w-[50%] items-center justify-center bg-white z-20 bg-opacity-10">
       <Input
         type="text"
         placeholder="https://github.com/YugBhanushali/github-downloader-nextjs"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
-        className=" sm:w-full "
+        // className="w-full lg:w-auto text-sm lg:text-base"
       />
-      <div className="flex gap-x-2 mt-6 ">
+      <div className="flex gap-x-2 mt-6">
         <Button
-          className=" rounded-lg w-[180px] sm:text-[14px] text-[12px]"
+          className="rounded-lg w-[180px] text-xs sm:text-sm lg:text-base py-1 sm:py-2 lg:py-3"
           onClick={handleDownload}
           disabled={isLoading}
         >
           {isLoading ? (
             <RotatingLines
               visible={true}
-              width="26"
+              width="20"
               strokeWidth="2"
               strokeColor="white"
               animationDuration="0.75"
@@ -85,27 +88,28 @@ function Downloader() {
             />
           ) : (
             <div className="flex gap-x-2 justify-center items-center">
-              <FiDownload size={18} /> Download
+              <FiDownload size={16} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />{" "}
+              Download
             </div>
           )}
         </Button>
         <Button
-          className=" rounded-lg w-[180px]  transition-transform  duration-200 sm:text-[14px] text-[12px]"
+          className="rounded-lg w-[180px] transition-transform duration-200 text-xs sm:text-sm lg:text-base py-1 sm:py-2 lg:py-3"
           onClick={handleCopyCurl}
-          // disabled={copied}
           variant={"outline"}
         >
           {copied ? (
             <div className="flex gap-x-2 justify-center items-center">
-              <FiCheck size={18} /> Copied!
+              <FiCheck size={16} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />{" "}
+              Copied!
             </div>
           ) : (
             <div className="flex gap-x-2 justify-center items-center">
-              <FiCopy size={18} /> Copy CURL
+              <FiCopy size={16} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" /> Copy
+              CURL
             </div>
           )}
         </Button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </div>
   );
