@@ -19,7 +19,7 @@ export default function Home() {
         <Navbar />
       </div>
       <div className="relative flex-grow flex flex-col w-full items-center sm:mt-[10%] mt-[50%] overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10">
-        <div className="mb-4 sm:mb-6">
+        <div className="mb-4 sm:mb-6 bg-white z-20">
           <Instruction />
         </div>
         <div className="flex flex-col w-full justify-center items-center gap-y-2 sm:gap-y-4">
@@ -28,11 +28,6 @@ export default function Home() {
           >
             Download Files and Directories from GitHub with Ease
           </h1>
-          {/* <p className="text-center text-xs sm:text-sm md:text-sm max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-3xl mb-4 sm:mb-3">
-            Git Fetch Pro simplifies the process of downloading specific files
-            or subdirectories from GitHub repos without cloning the entire
-            project.
-          </p> */}
 
           <div className="flex w-full items-center justify-center mb-6 sm:mb-8">
             <Downloader />

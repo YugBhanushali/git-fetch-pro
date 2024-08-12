@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import gitfetch from "../public/logo.png";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -21,7 +22,9 @@ const Navbar = () => {
       </div>
       {/* github */}
       <div>
-        <FaGithub size={25} />
+        <Link href={"https://github.com/YugBhanushali/git-fetch-pro"}>
+          <FaGithub size={25} />
+        </Link>
       </div>
     </div>
   );

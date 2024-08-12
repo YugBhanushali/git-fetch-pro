@@ -16,7 +16,7 @@ const Instruction = () => {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="rounded-xl px-3 sm:px-5 h-8 sm:h-10 font-semibold text-xs sm:text-sm"
+          className="rounded-xl px-3 sm:px-5 h-8 sm:h-10 font-bold text-sm sm:text-sm "
         >
           How to Use
         </Button>
