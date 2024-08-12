@@ -13,13 +13,15 @@ function Downloader() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
+  const apiUrl = "https://git-fetch-pro.onrender.com/api/download";
+
   const handleDownload = async () => {
     setIsLoading(true);
     setError("");
 
     try {
       const response = await axios.post(
-        "/api/download",
+        apiUrl,
         { url },
         {
           responseType: "blob",
@@ -50,7 +52,7 @@ function Downloader() {
 
   const handleCopyCurl = () => {
     const fileName = `${url.split("/").pop()}.zip`;
-    const curlCommand = `curl --location 'https://gitfetchpro.vercel.app/api/download' \\\n--header 'Content-Type: application/json' \\\n--data '{"url": "${url}"}' \\\n--output ${fileName}`;
+    const curlCommand = `curl --location '${apiUrl}' \\\n--header 'Content-Type: application/json' \\\n--data '{"url": "${url}"}' \\\n--output ${fileName}`;
     navigator.clipboard
       .writeText(curlCommand)
       .then(() => {
