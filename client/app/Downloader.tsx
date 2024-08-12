@@ -41,10 +41,15 @@ function Downloader() {
         setIsLoading(false);
         toast.success(`${url.split("/").pop()}.zip downloaded successfully`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error:", error);
-      setError("Error downloading folder. Please check your URL.");
-      toast.error("Error downloading folder. Please check your URL.");
+      if (error.response && error.response.status === 429) {
+        setError("Too many requests. Please try again later.");
+        toast.error("Too many requests. Please try again later.");
+      } else {
+        setError("Error downloading folder. Please check your URL.");
+        toast.error("Error downloading folder. Please check your URL.");
+      }
     } finally {
       setIsLoading(false);
     }
