@@ -1,6 +1,6 @@
 {
   "name": "gitfetchpro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to download specific folders from GitHub repositories",
   "main": "index.js",
   "bin": {
@@ -15,7 +15,17 @@
     "url": "https://github.com/YugBhanushali/git-fetch-pro/issues"
   },
   "homepage": "https://github.com/YugBhanushali/git-fetch-pro",
-  "keywords": [],
+  "keywords": [
+    "github",
+    "cli",
+    "folders",
+    "download",
+    "repository",
+    "git",
+    "npx",
+    "node",
+    "command-line"
+  ],
   "dependencies": {
     "axios": "^1.7.3",
     "commander": "^12.1.0",
