@@ -139,7 +139,7 @@ function Downloader() {
     <div className="flex flex-col w-full lg:w-[50%] items-center justify-center bg-white z-20 bg-opacity-10">
       <Input
         type="url"
-        placeholder="https://github.com/YugBhanushali/github-downloader-nextjs"
+        placeholder="https://github.com/YugBhanushali/git-fetch-pro/tree/main/client/app"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />
