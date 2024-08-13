@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import Instruction from "@/components/Instruction";
 import { Toaster, toast } from "sonner";
+import Head from "next/head";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -15,6 +16,9 @@ const jetBrainsMono = JetBrains_Mono({
 export default function Home() {
   return (
     <main className="flex flex-col w-full min-h-screen p-2 sm:p-4">
+      <Head>
+        <link rel="shortcut icon" href="/logo.png" sizes="any" />
+      </Head>
       <div className={`${jetBrainsMono.className}`}>
         <Navbar />
       </div>
