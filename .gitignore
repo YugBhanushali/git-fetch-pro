@@ -40,3 +40,5 @@ client/node_modules
 client/.env*.local
 
 server/node_modules
+
+npm-package/node_modules

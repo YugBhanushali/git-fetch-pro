@@ -1,0 +1,24 @@
+{
+  "name": "gitfetchpro",
+  "version": "1.0.0",
+  "description": "CLI tool to download specific folders from GitHub repositories",
+  "main": "index.js",
+  "bin": {
+    "gitfetchpro": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Yug Bhanushali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YugBhanushali/git-fetch-pro/issues"
+  },
+  "homepage": "https://github.com/YugBhanushali/git-fetch-pro",
+  "keywords": [],
+  "dependencies": {
+    "axios": "^1.7.3",
+    "commander": "^12.1.0",
+    "p-limit": "^6.1.0"
+  }
+}
