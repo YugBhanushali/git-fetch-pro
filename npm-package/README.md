@@ -35,13 +35,13 @@ npm install -g gitfetchpro
 ### Example
 
 ```bash
-gitfetchpro https://github.com/YugBhanushali/git-fetch-pro/tree/main/src -o ./downloaded-folder
+gitfetchpro https://github.com/YugBhanushali/git-fetch-pro/tree/main/client -o ./downloaded-folder
 ```
 
 Or using `npx`:
 
 ```bash
-npx gitfetchpro https://github.com/YugBhanushali/git-fetch-pro/tree/main/src -o ./downloaded-folder
+npx gitfetchpro https://github.com/YugBhanushali/git-fetch-pro/tree/main/client -o ./downloaded-folder
 ```
 
 This command will clone the `src` folder from the specified GitHub repository into the `downloaded-folder` directory.
