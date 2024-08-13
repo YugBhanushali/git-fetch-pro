@@ -11,6 +11,14 @@ const Footer = () => {
         <div className="flex gap-x-4 sm:gap-x-6">
           <p>
             <Link
+              href="https://www.npmjs.com/package/gitfetchpro"
+              className="hover:underline hover:underline-offset-4"
+            >
+              Npm package
+            </Link>
+          </p>
+          <p>
+            <Link
               href="https://twitter.com/TheYug03"
               className="hover:underline hover:underline-offset-4"
             >

@@ -1,4 +1,4 @@
-import Downloader from "./Downloader";
+import Downloader from "@/components/Downloader";
 import Navbar from "@/components/Navbar";
 import GridPattern from "@/components/animated-grid-pattern";
 import { JetBrains_Mono } from "next/font/google";
